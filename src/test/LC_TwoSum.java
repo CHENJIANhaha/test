@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 /**
- * leetcode_1
+ * 1.两数之和
  *
  */
 public class LC_TwoSum {

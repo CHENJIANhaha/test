@@ -1,15 +1,15 @@
 package test;
 
 /**
- * leetcode_7.反转整数
+ * 7.反转整数
  */
 public class LC_Reverse {
-	
 	
 	public static void main(String[] args) {
 		System.out.println(reverse(123));
 	}
 	
+	//使用字符串反转数字
 	public static int reverse(int x) {
 
 		int y = 0;
