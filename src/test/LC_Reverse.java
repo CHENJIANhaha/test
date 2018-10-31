@@ -1,9 +1,15 @@
 package test;
 
-public class Reverse {
+/**
+ * leetcode_7.反转整数
+ */
+public class LC_Reverse {
+	
+	
 	public static void main(String[] args) {
 		System.out.println(reverse(123));
 	}
+	
 	public static int reverse(int x) {
 
 		int y = 0;
@@ -19,6 +25,7 @@ public class Reverse {
 			result += array[i];
 		}
 
+		//字符转数字时捕获异常，针对溢出检查
 		try {
 			Integer.parseInt(result);
 		}catch(NumberFormatException e) {
