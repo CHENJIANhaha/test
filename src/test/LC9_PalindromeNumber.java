@@ -4,7 +4,7 @@ package test;
  * 9.»ØÎÄÊı
  *
  */
-public class LC_PalindromeNumber {
+public class LC9_PalindromeNumber {
 	public static void main(String[] args) {
 		System.out.println(palindrome2(121));
 	}

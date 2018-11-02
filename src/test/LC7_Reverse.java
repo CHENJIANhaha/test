@@ -3,7 +3,7 @@ package test;
 /**
  * 7.反转整数
  */
-public class LC_Reverse {
+public class LC7_Reverse {
 	
 	public static void main(String[] args) {
 		System.out.println(reverse(123));

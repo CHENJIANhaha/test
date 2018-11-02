@@ -9,7 +9,7 @@ import java.util.Scanner;
  * 1.两数之和
  *
  */
-public class LC_TwoSum {
+public class LC1_TwoSum {
 	public static void main(String args[]) throws IOException {
 		int number = 0;
 		int target = 0;
