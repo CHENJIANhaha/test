@@ -6,7 +6,7 @@ import java.util.Stack;
  * 20.ÓÐÐ§µÄÀ¨ºÅ
  *
  */
-public class LC20_ValicParentheses {
+public class LC20_ValidParentheses {
 	public static void main(String[] args) {
 		System.out.println(isValid("]"));
 	}
