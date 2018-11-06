@@ -17,7 +17,7 @@ public class Permutation {
 	/*全排列：head's Algorithm*/	
 	public static void permutation(int n, char[] str) {
 		if(n == 1) {
-			System.out.println(Arrays.toString(str));
+			System.out.println(Arrays.toString(str)); //数组转字符串
 		}else {
 			for(int i = 0; i < n-1; i++) {
 				permutation(n-1, str);
