@@ -1,11 +1,9 @@
 package test;
 
 import java.util.List;
-import java.util.Stack;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
-
 /**
  * 22.括号生成
  *
@@ -13,16 +11,25 @@ import java.util.Iterator;
 public class LC22_GenerateParentheses {
 	static List<String> total = new ArrayList<> ();
 	public static void main(String[] args) {
-		List<String> list = generateParentheses(3); 
-		String[] result = new String[list.size()];
-		
-		for(int i=0; i<list.size(); i++) {
-			result[i] = list.get(i);
+		List<String> list1 = generateParentheses(3); 
+		List<String> list2 = generateValid(3);
+		String[] result1 = new String[list1.size()];
+		String[] result2 = new String[list2.size()];
+
+		for(int i=0; i<list1.size(); i++) {
+			result1[i] = list1.get(i);
 		}
-		System.out.println(Arrays.toString(result));
+		
+		for(int i=0; i<list2.size(); i++) {
+			result2[i] = list2.get(i);
+		}
+		
+		System.out.println("方法1："+Arrays.toString(result1));
+		System.out.println("方法2："+Arrays.toString(result2));
 	}
 	
-	//生成所有的有效括号
+		
+	//方法一：生成所有的有效括号，该方法提交后超出时间限制
 	public static List<String> generateParentheses(int n) {
 		String str = "";
 		for(int i=0; i<n; i++) { 
@@ -33,7 +40,7 @@ public class LC22_GenerateParentheses {
 		Iterator<String> it = total.iterator();
 		while(it.hasNext()) { //去掉total中无效的括号
 			String x = it.next();
-			if(!isValid(x)) {
+			if(!isValid(x.toCharArray())) {
 				it.remove();
 			}
 		}
@@ -45,6 +52,33 @@ public class LC22_GenerateParentheses {
 			}
 		}*/
 		return total;
+	}
+	
+	//方法二：暴力法
+	public static List<String> generateValid(int n) {
+		char[] arr = new char[2*n];
+		int pos = 0;
+		List<String> result = new ArrayList<> ();
+		generateAll(arr, pos, result);
+		return result;
+	}
+	
+	//方法三：回溯法
+	
+	//方法四：闭合数
+	
+	//生成所有可能的括号组合
+	public static void generateAll(char[] arr, int pos, List<String> list) {
+		if(pos == arr.length) { 
+			if(isValid(arr)) { //判断当前括号组合是否有效
+				list.add(new String(arr));
+			}
+		}else {
+			arr[pos] = '(';
+			generateAll(arr, pos+1, list);
+			arr[pos] = ')';
+			generateAll(arr, pos+1, list);
+		}
 	}
 	
 	//括号的全排列
@@ -78,29 +112,18 @@ public class LC22_GenerateParentheses {
 	}
 	
 	//判断是否为有效的括号组合
-	public static boolean isValid(String s) {
-		Stack<Character> stack = new Stack<>();
-		char[] arr = s.toCharArray();
-		
-		if(s.length()%2 != 0) { //字符长度为奇数时直接返回false
-			return false;
-		}
-		
-		for(int i=0; i<arr.length; i++) {
-			//将与正括号匹配的反括号压入栈
-			if(arr[i] == '(') {
-				stack.push(')');
-			}else if(arr[i] == '[') {
-				stack.push(']');
-			}else if(arr[i] == '{') {
-				stack.push('}');
+	public static boolean isValid(char[] arr) {
+		int balance = 0;
+		for(char c: arr) {
+			if(c == '(') {
+				balance++;
+			}else {
+				balance--;
 			}
-			
-			//栈顶元素与下一个括号匹配，则将栈顶元素弹出，最后若栈为空则有效
-			if(!stack.empty() && (i+1) != arr.length && stack.peek().equals(arr[i+1])) {
-				stack.pop();
+			if(balance < 0) {
+				return false;
 			}
 		}
-		return stack.empty();
+		return (balance == 0);
 	}
 }
