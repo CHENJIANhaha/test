@@ -2,13 +2,14 @@ package test;
 
 import java.io.IOException;
 
+// 122. 买卖股票的最佳时机Ⅱ
 public class LC_122 {
 	public static void main(String args[]) throws IOException {
 		int[] test = {7,6,4,3,1};
-		System.out.println(maxProfit(test));
+		System.out.println(maxProfit2(test));
 	}
 	
-	//使用递归暴力求解
+	//方法一：使用递归暴力求解
 	public static int maxProfit(int[] prices) {
         return calculate(prices, 0);
     }
@@ -28,4 +29,22 @@ public class LC_122 {
     	}
     	return max;
     }
+    
+    //方法二：峰谷法
+    public static int maxProfit2(int[] prices) {
+    	if(prices.length <= 0) return 0;
+    	int maxProfit = 0;
+    	int valley = prices[0];
+    	int peak = prices[0];
+    	int i = 0;
+    	while(i < prices.length -1) {
+    		while(i < prices.length-1 && prices[i+1] <= prices[i]) i++;
+    		valley = prices[i];
+    		while(i < prices.length-1 && prices[i+1] >= prices[i]) i++;
+    		peak = prices[i];
+    		maxProfit += peak - valley;
+    	}
+    	return maxProfit;
+    }
+    
 }
