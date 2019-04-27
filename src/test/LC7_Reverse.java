@@ -6,7 +6,7 @@ package test;
 public class LC7_Reverse {
 	
 	public static void main(String[] args) {
-		System.out.println(reverse(123));
+		System.out.println(reverse(-123));
 	}
 	
 	//使用字符串反转数字
