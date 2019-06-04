@@ -2,6 +2,7 @@ package test;
 
 import java.util.HashMap;
 
+// 387. 字符串中第一个唯一的字符
 public class LC_387 {
 	public static void main(String arg[]) {
 		String s = "c";

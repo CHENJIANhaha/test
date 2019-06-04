@@ -5,10 +5,11 @@ package test;
  * 14.最长公共前缀
  *
  */
+
 public class LC14_LongestCommonPrefix {
 	public static void main(String[] args) {
-		String[] strs = {};
-		System.out.println(longestCommonPrefix(strs));
+		String[] strs = {"flower","flow","flight"};
+		System.out.println(longestCommonPrefix2(strs));
 	}
 	
 	public static String longestCommonPrefix(String[] strs) {
@@ -40,5 +41,33 @@ public class LC14_LongestCommonPrefix {
 			}
 		}
 		return common;
+	}
+	
+	//方法二：横向比较字符串
+	public static String longestCommonPrefix2(String[] strs) {
+        if (strs.length == 0) return "";
+        String prefix = strs[0];
+        for (int i = 1; i < strs.length; i++)
+            while (strs[i].indexOf(prefix) != 0) { // string.indexOf(str)，返回str在string中第一次出现的位置
+            	System.out.println(strs[i].indexOf(prefix));
+                prefix = prefix.substring(0, prefix.length() - 1);
+                if (prefix.isEmpty()) return "";
+            }        
+        return prefix;
+    }
+	
+	//方法三：纵向比较字符串
+	public static String longestCommonPrefix3(String[] strs) {
+		if(strs.length == 0) return "";
+		for(int i=0; i<strs[0].length(); i++) {
+			char c = strs[0].charAt(i);
+			for(int j=1; j<strs.length; j++) {
+				if(strs[j].length() == i || strs[j].charAt(i) != c) {
+					// 当不再可能又公共的字符时
+					return strs[0].substring(0, i);
+				}
+			}
+		}
+		return strs[0];
 	}
 }

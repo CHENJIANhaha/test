@@ -16,7 +16,7 @@ public class LC1_TwoSum {
 		int[] result1 = new int[2];
 		int[] result2 = new int[2];
 		int[] result3 = new int[2];
-		System.out.println("请输入要输入数组的大小：");
+		System.out.println("请输要输入数组的大小：");
 		Scanner in_number = new Scanner(System.in);
 		number = in_number.nextInt();
 		int[] array = new int[number];
