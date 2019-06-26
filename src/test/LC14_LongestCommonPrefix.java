@@ -2,7 +2,7 @@ package test;
 
 
 /**
- * 14.×î³¤¹«¹²Ç°×º
+ * 14.ï¿½î³¤ï¿½ï¿½ï¿½ï¿½Ç°×º
  *
  */
 
@@ -10,6 +10,7 @@ public class LC14_LongestCommonPrefix {
 	public static void main(String[] args) {
 		String[] strs = {"flower","flow","flight"};
 		System.out.println(longestCommonPrefix2(strs));
+		System.out.println(7^4);
 	}
 	
 	public static String longestCommonPrefix(String[] strs) {
@@ -17,16 +18,16 @@ public class LC14_LongestCommonPrefix {
 		int min = 0;
 		
         if(strs != null && strs.length > 0) {
-            min = strs[0].length(); //×î¶Ìµ¥´ÊµÄ³¤¶È
+            min = strs[0].length(); //ï¿½ï¿½Ìµï¿½ï¿½ÊµÄ³ï¿½ï¿½ï¿½
         }else {
             return "";
         }
         
 		for(int i=0; i<strs.length; i++) {
-			if(strs[i].equals("")) { //Êý×éÖÐ´æÔÚ¿Õ×Ö·û´®
+			if(strs[i].equals("")) { //ï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½Ú¿ï¿½ï¿½Ö·ï¿½ï¿½ï¿½
 				return "";
 			}
-			if(strs[i].length() < min) { //ÕÒ³ö³¤¶È×î¶ÌµÄµ¥´Ê
+			if(strs[i].length() < min) { //ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÌµÄµï¿½ï¿½ï¿½
 				min = strs[i].length();
 			}
 		}
@@ -34,7 +35,7 @@ public class LC14_LongestCommonPrefix {
 		for(int i=1; i<=min; i++) {
 			common = strs[0].substring(0, i);
 			for(int j=1; j<strs.length; j++) {
-				if(!strs[j].substring(0, i).equals(common)) { //Ò»µ©³öÏÖÓëcommon²»Æ¥ÅäµÄµ¥´Ê·µ»ØÇ°Ò»¸öcommon
+				if(!strs[j].substring(0, i).equals(common)) { //Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½commonï¿½ï¿½Æ¥ï¿½ï¿½Äµï¿½ï¿½Ê·ï¿½ï¿½ï¿½Ç°Ò»ï¿½ï¿½common
 					common = strs[0].substring(0, i-1);
 					return common;
 				}
@@ -43,12 +44,12 @@ public class LC14_LongestCommonPrefix {
 		return common;
 	}
 	
-	//·½·¨¶þ£ººáÏò±È½Ï×Ö·û´®
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½
 	public static String longestCommonPrefix2(String[] strs) {
         if (strs.length == 0) return "";
         String prefix = strs[0];
         for (int i = 1; i < strs.length; i++)
-            while (strs[i].indexOf(prefix) != 0) { // string.indexOf(str)£¬·µ»ØstrÔÚstringÖÐµÚÒ»´Î³öÏÖµÄÎ»ÖÃ
+            while (strs[i].indexOf(prefix) != 0) { // string.indexOf(str)ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½strï¿½ï¿½stringï¿½Ðµï¿½Ò»ï¿½Î³ï¿½ï¿½Öµï¿½Î»ï¿½ï¿½
             	System.out.println(strs[i].indexOf(prefix));
                 prefix = prefix.substring(0, prefix.length() - 1);
                 if (prefix.isEmpty()) return "";
@@ -56,14 +57,14 @@ public class LC14_LongestCommonPrefix {
         return prefix;
     }
 	
-	//·½·¨Èý£º×ÝÏò±È½Ï×Ö·û´®
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½
 	public static String longestCommonPrefix3(String[] strs) {
 		if(strs.length == 0) return "";
 		for(int i=0; i<strs[0].length(); i++) {
 			char c = strs[0].charAt(i);
 			for(int j=1; j<strs.length; j++) {
 				if(strs[j].length() == i || strs[j].charAt(i) != c) {
-					// µ±²»ÔÙ¿ÉÄÜÓÖ¹«¹²µÄ×Ö·ûÊ±
+					// ï¿½ï¿½ï¿½ï¿½ï¿½Ù¿ï¿½ï¿½ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½Ê±
 					return strs[0].substring(0, i);
 				}
 			}
